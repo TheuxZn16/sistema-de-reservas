@@ -10,6 +10,8 @@ import {
   validatorCompiler,
   type ZodTypeProvider,
 } from 'fastify-type-provider-zod';
+import homeRoute from './routes/homeRoute';
+import professionalRoute from './routes/professionalRoute';
 
 class App {
   public app: FastifyInstance;
@@ -43,6 +45,9 @@ class App {
     this.app.register(fastifySwaggerUi, {
       routePrefix: '/docs',
     });
+
+    this.app.register(homeRoute.route)
+    this.app.register(professionalRoute.route)
   }
 }
 export default new App().app;
