@@ -23,12 +23,3 @@ export const ProfessionalBodySchema = z.object({
 })
 
 export type ProfessionalBody = z.infer<typeof ProfessionalBodySchema>
-
-export const ProfessionalBodySchema2 = z.object({
-  email: z.string().email(),
-  password: z.string().min(8),
-  name: z.string().min(3),
-});
-
-// Inferindo o tipo TypeScript a partir do esquema
-export type ProfessionalBody2 = z.infer<typeof ProfessionalBodySchema>

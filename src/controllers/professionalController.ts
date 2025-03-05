@@ -10,7 +10,7 @@ class professionalController {
 		const { name, email, password: passwordWithoutHash } = request.body;
     
     try {
-      const password = await bcrypt.hash(passwordWithoutHash, 10);
+      const password = await bcrypt.hash(passwordWithoutHash, process.env.HASH as string);
       const newUser = { email, password, name}
 
       await prisma.professional.create({data: newUser})
