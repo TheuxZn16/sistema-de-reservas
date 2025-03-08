@@ -28,7 +28,52 @@ class professionalRoute {
 			},
 			professionalController.create,
 		);
+
+		app.get('/professional/:id', {
+			schema: {
+        summary: 'Retorna um profissional pelo ID',
+        tags: ['Professional'],
+        params: z.object({
+          id: z.string(),
+        }),
+        response: {
+          400: z.object({
+            message: z.string(),
+          }),
+          404: z.object({
+            message: z.string(),
+          }),
+          500: z.object({
+            message: z.string(),
+          }),
+        },
+      },
+		}, professionalController.show)
+
+		app.delete('/professional/:id', {
+			schema: {
+        summary: 'Deleta um profissional pelo ID',
+        tags: ['Professional'],
+        params: z.object({
+          id: z.string(),
+        }),
+        response: {
+          204: z.object({
+            message: z.string(),
+          }),
+          400: z.object({
+            message: z.string(),
+          }),
+          404: z.object({
+            message: z.string(),
+          }),
+          500: z.object({
+            message: z.string(),
+          }),
+        },
+      },
+		}, professionalController.delete)
 	}
 }
 
-export default new professionalRoute();
+export default new professionalRoute().route;

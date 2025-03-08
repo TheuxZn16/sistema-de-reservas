@@ -47,7 +47,7 @@ class App {
     });
 
     this.app.register(homeRoute.route)
-    this.app.register(professionalRoute.route)
+    this.app.register(professionalRoute)
   }
 }
 export default new App().app;
